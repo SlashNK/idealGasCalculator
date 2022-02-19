@@ -1,0 +1,158 @@
+body {
+    background-color: #F1ECCE;
+    color: #331832;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+
+header, footer {
+    background-color: #9FC2BA;
+}
+
+header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+header h1 {
+    margin-left: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+#content {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.math {
+    font-family: serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+.collapsablePanel, .panel {
+    margin-bottom: 20px;
+}
+
+.collapsablePanel .panelBody, .collapsablePanel .panelHead, .panel .panelBody, .panel .panelHead {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+}
+
+.panel .panelBody {
+    background-color: #9FC2BA;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.collapsablePanel .panelBody {
+    background-color: #9FC2BA;
+    border-radius: 0px 10px 10px 10px;
+    display: none;
+    overflow: hidden;
+}
+
+.panelHead {
+    border-style: none;
+    text-align: left;
+    font-size: 1.5rem;
+    background-color: #9FC2BA;
+}
+
+.panelHead h2 {
+    margin: 0px;
+}
+
+.panel .panelHead {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.collapsablePanel .panelHead {
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+}
+
+.collapsablePanel .active {
+    border-radius: 10px 10px 0px 0px;
+}
+
+
+.closedPanel {
+    background-color: #9FC2BA;
+
+}
+
+.hidden {
+    display: none;
+    overflow: hidden;
+}
+
+#resTypeContainer {
+    padding: 0px;
+}
+
+
+.panelBody input, .panelBody select, .panelBody button {
+    background-color: #F1ECCE;
+    font-size: 1.2rem;
+    border-style: none;
+    border-radius: 5px;
+}
+
+.inputBlock input {
+    float: left;
+    margin-right: 10px;
+}
+
+.panelBody button {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0px;
+}
+
+.inputBlock p {
+    font-size: 1.2rem;
+}
+
+.inputBlock {
+    margin-top: 20px;
+}
+
+#resContainer p {
+    margin: 0px;
+    margin-left: 10px;
+    display: inline-block;
+    line-height: 15px;
+    vertical-align: top;
+    font-size: 2rem;
+}
+button:hover{
+    background-color: #6F8781;
+}
+#alertHolder{
+    color: crimson;
+}
+.hidden {
+    display: none;
+    overflow: hidden;
+}
+
+footer p{
+    margin: 0px 100px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+footer{
+    padding: 10px;
+}

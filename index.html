@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Уравнение состояния идеального газа</title>
+    <link rel="icon" href="src/pageIcon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script>function jump(name) {
+        let url = location.href;
+        location.href = "#" + name;
+        history.replaceState(null, null, url);
+    }
+
+    function showMsgHolder(msg, holder) {
+        const msgHolder = document.querySelector(holder)
+        msgHolder.innerHTML = msg
+        if (msgHolder.classList.contains('hidden')) msgHolder.classList.remove('hidden')
+    }
+
+    function hideMsgHolder(holder) {
+        const msgHolder = document.querySelector(holder)
+        if (!msgHolder.classList.contains('hidden')) msgHolder.classList.add('hidden')
+    }</script>
+    <script src="calculations.js"></script>
+</head>
+<body>
+<header>
+    <h1>Онлайн-калькулятор</h1>
+</header>
+<div id="content">
+    <h2>Уравнение состояния идеального газа. Уравнение Менделеева — Клапейрона</h2>
+    <p>Данный онлайн-калькулятор предназначен для решения задач на уравнение состояния идеального газа. Калькулятор позволяет рассчитать соотношение между параметрами уравнения, такими как объем, температура, давление и молярная масса газа. Далее приведена краткая теоретическая справка, а также пару примеров задач с возможностью демонстрации их решения на онлайн-калькуляторе.</p>
+    <div id="theory" class="collapsablePanel">
+        <button class="panelHead"><h2>Теория</h2></button>
+        <div class="panelBody">
+
+            <p><b>Уравнение состояния идеального газа</b> (иногда <b>уравнение Менделеева — Клапейрона</b>) — формула,
+                устанавливающая зависимость между давлением, молярным объёмом и абсолютной температурой идеального газа.
+                Уравнение имеет вид:</p>
+            <div style="text-align: center"><span class="math">pV = vRT</span></div>
+            <p>где</p>
+            <ul>
+                <li><span class="math">p</span> - давление</li>
+                <li><span class="math">V</span> - объём газа</li>
+                <li><span class="math">v</span> - количество вещества в молях</li>
+                <li><span class="math">R</span> - универсальная газовая постоянная, <span class="math">R ≈ 8,314 Дж/(моль⋅К)</span>
+                </li>
+                <li><span class="math">T</span> - термодинамическая температура, К.</li>
+            </ul>
+        </div>
+    </div>
+    <div id="examples" class="collapsablePanel">
+        <button class="panelHead"><h2>Примеры задач</h2></button>
+        <div class="panelBody">
+            <ol>
+                <li>
+                    <p>В колбе объемом 2,6 литра находится кислород при давлении 2,3 атмосфер и температуре 26 градусов
+                        Цельсия .
+                        Вопрос: сколько молей кислорода содержится в колбе?</p>
+                    <button onclick="
+                        fillInput('n','n',['v',2.6,'l'],['t',26,'c'],['p',2.3,'a'])
+                        calcPerformance()
+                        jump('calculatorPanel');
+                    ">Решить с помощью калькулятора
+                    </button>
+                </li>
+                <li><p>Некоторое количество гелия при 78 градусах Цельсия и давлении 45,6 атмосфер занимает объем 16,5
+                    литров.
+                    Вопрос: Каков объем этого газа при нормальных условиях? (Нормальными условиями для
+                    газов считается давление в 1 атмосферу и температура 0 градусов Цельсия)</p>
+                    <button onclick="
+                        fillInput('n','n',['v',16.5,'l'],['t',78,'c'],['p',45.6,'a']);
+                        calcPerformance()
+                        jump('calculatorPanel');
+                    ">Выполнить 1-ое действие с помощью калькулятора
+                    </button>
+                    <button onclick="
+                        fillInput('v','l',['n',26.11,'n'],['t',0,'c'],['p',1,'a']);
+                        calcPerformance();
+                        jump('calculatorPanel');
+                    ">Выполнить 2-ое действие с помощью калькулятора
+                    </button>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div id="calculatorPanel" class="panel">
+        <a name=""></a>
+        <div class="panelHead"><h2>Калькулятор</h2></div>
+        <div class="panelBody">
+            <div>
+                <select id="selectRes">
+                    <option value="v">Объем (V)</option>
+                    <option value="t">Температура (T)</option>
+                    <option value="p">Давление (P)</option>
+                    <option value="n">Моль газа (n)</option>
+                </select>
+                <div class="inputBlock" id="vInputBlock">
+                    <p>Объем (V):</p>
+                    <input>
+                    <select id="vType">
+                        <option value="m">м^3</option>
+                        <option value="cm">см^3</option>
+                        <option value="l">л.</option>
+                    </select>
+                </div>
+                <div class="inputBlock" id="tInputBlock">
+                    <p>Температура (T):</p>
+                    <input>
+                    <select id="tType">
+                        <option value="k">°K</option>
+                        <option value="c">°C</option>
+                        <option value="f">°F</option>
+                    </select>
+                </div>
+                <div class="inputBlock" id="pInputBlock">
+                    <p>Давление (P):</p>
+                    <input>
+                    <select id="pType">
+                        <option value="p">Па.</option>
+                        <option value="a">атм.</option>
+                        <option value="b">бар</option>
+                    </select>
+                </div>
+                <div class="inputBlock" id="nInputBlock">
+                    <p>Моль газа (n):</p>
+                    <input>
+                    <p id="nType">моль</p>
+                </div>
+                <div class="inputBlock" id="resTypeContainer"><p>Тип результата:</p></div>
+                <div class="inputBlock">
+                    <p id="alertHolder" class="hidden"></p>
+                    <button id="calcButton" onclick="calcPerformance()">Произвести вычисления</button>
+                </div>
+                <div id="resBlock" class="inputBlock">
+                    <p>Результат:</p>
+                    <div id="resContainer">
+                        <p id="resValue">12</p>
+                        <p id="resUnit">m^3</p>
+                    </div>
+
+                    <p></p>
+                </div>
+            </div>
+            <script>
+                const selectRes = document.querySelector('#selectRes')
+                let currentId = selectRes.value
+                let resTypeContainer = document.querySelector('#resTypeContainer')
+
+                function toggleSelectedRes(id) {
+                    hideMsgHolder('#alertHolder')
+                    const elm = document.querySelector('#' + id + 'InputBlock')
+                    const type = document.querySelector('#' + id + 'Type')
+                    const resBlock = document.querySelector('#resBlock')
+                    if (!resBlock.classList.contains('hidden')) resBlock.classList.add('hidden')
+                    if (elm.classList.contains('hidden')) {
+                        elm.append(type)
+                        elm.classList.remove('hidden')
+                    } else {
+                        resTypeContainer.append(type)
+                        elm.classList.add('hidden')
+                    }
+                }
+
+                function onResTypeChange() {
+                    toggleSelectedRes(currentId)
+                    currentId = selectRes.value
+                    toggleSelectedRes(currentId)
+                }
+
+                toggleSelectedRes(currentId)
+                selectRes.addEventListener('change', onResTypeChange)
+            </script>
+
+        </div>
+    </div>
+    <script>
+        const coll = Array.prototype.filter.call(
+            document.querySelectorAll('.panelHead'),
+            elm => elm.parentNode.classList.contains('collapsablePanel')
+        )
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener('click',
+                function () {
+                    this.classList.toggle('active')
+                    let pStyle = this.nextElementSibling.style
+                    if (pStyle.display === 'block') {
+                        pStyle.display = 'none'
+                    } else {
+                        pStyle.display = 'block'
+
+                    }
+                }
+            )
+        }
+    </script>
+</div>
+<footer>
+    <p>Автор: Харитонов Н.</p>
+    <p><a href="https://github.com/SlashNK">GihHub</a> <a href="mailto:drmob42@gmail.com">drmob42@gmail.com</a></p>
+    <p>2022</p>
+    <link>
+</footer>
+</body>
+</html>
